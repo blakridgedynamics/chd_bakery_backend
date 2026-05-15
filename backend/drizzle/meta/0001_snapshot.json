@@ -1,0 +1,1878 @@
+{
+    "id":  "26f07da2-d3e0-4950-8f20-46a95ee70e82",
+    "prevId":  "36114827-8e21-430f-a3c4-2d193ad30131",
+    "version":  "7",
+    "dialect":  "postgresql",
+    "tables":  {
+                   "public.addresses":  {
+                                            "name":  "addresses",
+                                            "schema":  "",
+                                            "columns":  {
+                                                            "id":  {
+                                                                       "name":  "id",
+                                                                       "type":  "uuid",
+                                                                       "primaryKey":  true,
+                                                                       "notNull":  true,
+                                                                       "default":  "gen_random_uuid()"
+                                                                   },
+                                                            "user_id":  {
+                                                                            "name":  "user_id",
+                                                                            "type":  "uuid",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                            "label":  {
+                                                                          "name":  "label",
+                                                                          "type":  "varchar(50)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false,
+                                                                          "default":  "\u0027Home\u0027"
+                                                                      },
+                                                            "full_name":  {
+                                                                              "name":  "full_name",
+                                                                              "type":  "varchar(120)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                            "phone":  {
+                                                                          "name":  "phone",
+                                                                          "type":  "varchar(20)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                            "address_line1":  {
+                                                                                  "name":  "address_line1",
+                                                                                  "type":  "text",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true
+                                                                              },
+                                                            "address_line2":  {
+                                                                                  "name":  "address_line2",
+                                                                                  "type":  "text",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                            "city":  {
+                                                                         "name":  "city",
+                                                                         "type":  "varchar(100)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                            "state":  {
+                                                                          "name":  "state",
+                                                                          "type":  "varchar(100)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                            "country":  {
+                                                                            "name":  "country",
+                                                                            "type":  "varchar(100)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true,
+                                                                            "default":  "\u0027India\u0027"
+                                                                        },
+                                                            "pincode":  {
+                                                                            "name":  "pincode",
+                                                                            "type":  "varchar(10)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                            "is_default":  {
+                                                                               "name":  "is_default",
+                                                                               "type":  "boolean",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true,
+                                                                               "default":  false
+                                                                           },
+                                                            "created_at":  {
+                                                                               "name":  "created_at",
+                                                                               "type":  "timestamp",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true,
+                                                                               "default":  "now()"
+                                                                           }
+                                                        },
+                                            "indexes":  {
+                                                            "addresses_user_idx":  {
+                                                                                       "name":  "addresses_user_idx",
+                                                                                       "columns":  [
+                                                                                                       {
+                                                                                                           "expression":  "user_id",
+                                                                                                           "isExpression":  false,
+                                                                                                           "asc":  true,
+                                                                                                           "nulls":  "last"
+                                                                                                       }
+                                                                                                   ],
+                                                                                       "isUnique":  false,
+                                                                                       "concurrently":  false,
+                                                                                       "method":  "btree",
+                                                                                       "with":  {
+
+                                                                                                }
+                                                                                   }
+                                                        },
+                                            "foreignKeys":  {
+                                                                "addresses_user_id_users_id_fk":  {
+                                                                                                      "name":  "addresses_user_id_users_id_fk",
+                                                                                                      "tableFrom":  "addresses",
+                                                                                                      "tableTo":  "users",
+                                                                                                      "columnsFrom":  [
+                                                                                                                          "user_id"
+                                                                                                                      ],
+                                                                                                      "columnsTo":  [
+                                                                                                                        "id"
+                                                                                                                    ],
+                                                                                                      "onDelete":  "cascade",
+                                                                                                      "onUpdate":  "no action"
+                                                                                                  }
+                                                            },
+                                            "compositePrimaryKeys":  {
+
+                                                                     },
+                                            "uniqueConstraints":  {
+
+                                                                  },
+                                            "policies":  {
+
+                                                         },
+                                            "checkConstraints":  {
+
+                                                                 },
+                                            "isRLSEnabled":  false
+                                        },
+                   "public.announcements":  {
+                                                "name":  "announcements",
+                                                "schema":  "",
+                                                "columns":  {
+                                                                "id":  {
+                                                                           "name":  "id",
+                                                                           "type":  "uuid",
+                                                                           "primaryKey":  true,
+                                                                           "notNull":  true,
+                                                                           "default":  "gen_random_uuid()"
+                                                                       },
+                                                                "text":  {
+                                                                             "name":  "text",
+                                                                             "type":  "text",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true
+                                                                         },
+                                                                "emoji":  {
+                                                                              "name":  "emoji",
+                                                                              "type":  "varchar(10)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                                "link_url":  {
+                                                                                 "name":  "link_url",
+                                                                                 "type":  "text",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                                "link_label":  {
+                                                                                   "name":  "link_label",
+                                                                                   "type":  "varchar(60)",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  false
+                                                                               },
+                                                                "sort_order":  {
+                                                                                   "name":  "sort_order",
+                                                                                   "type":  "integer",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  0
+                                                                               },
+                                                                "is_active":  {
+                                                                                  "name":  "is_active",
+                                                                                  "type":  "boolean",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true,
+                                                                                  "default":  true
+                                                                              },
+                                                                "starts_at":  {
+                                                                                  "name":  "starts_at",
+                                                                                  "type":  "timestamp",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                                "ends_at":  {
+                                                                                "name":  "ends_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                                "created_at":  {
+                                                                                   "name":  "created_at",
+                                                                                   "type":  "timestamp",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  "now()"
+                                                                               },
+                                                                "updated_at":  {
+                                                                                   "name":  "updated_at",
+                                                                                   "type":  "timestamp",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  "now()"
+                                                                               }
+                                                            },
+                                                "indexes":  {
+                                                                "announcements_active_order_idx":  {
+                                                                                                       "name":  "announcements_active_order_idx",
+                                                                                                       "columns":  [
+                                                                                                                       {
+                                                                                                                           "expression":  "is_active",
+                                                                                                                           "isExpression":  false,
+                                                                                                                           "asc":  true,
+                                                                                                                           "nulls":  "last"
+                                                                                                                       },
+                                                                                                                       {
+                                                                                                                           "expression":  "sort_order",
+                                                                                                                           "isExpression":  false,
+                                                                                                                           "asc":  true,
+                                                                                                                           "nulls":  "last"
+                                                                                                                       }
+                                                                                                                   ],
+                                                                                                       "isUnique":  false,
+                                                                                                       "concurrently":  false,
+                                                                                                       "method":  "btree",
+                                                                                                       "with":  {
+
+                                                                                                                }
+                                                                                                   }
+                                                            },
+                                                "foreignKeys":  {
+
+                                                                },
+                                                "compositePrimaryKeys":  {
+
+                                                                         },
+                                                "uniqueConstraints":  {
+
+                                                                      },
+                                                "policies":  {
+
+                                                             },
+                                                "checkConstraints":  {
+
+                                                                     },
+                                                "isRLSEnabled":  false
+                                            },
+                   "public.banners":  {
+                                          "name":  "banners",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "uuid",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true,
+                                                                     "default":  "gen_random_uuid()"
+                                                                 },
+                                                          "title":  {
+                                                                        "name":  "title",
+                                                                        "type":  "varchar(200)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                          "subtitle":  {
+                                                                           "name":  "subtitle",
+                                                                           "type":  "text",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                          "image_url":  {
+                                                                            "name":  "image_url",
+                                                                            "type":  "text",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                          "link_url":  {
+                                                                           "name":  "link_url",
+                                                                           "type":  "text",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                          "link_label":  {
+                                                                             "name":  "link_label",
+                                                                             "type":  "varchar(80)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                          "sort_order":  {
+                                                                             "name":  "sort_order",
+                                                                             "type":  "integer",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  0
+                                                                         },
+                                                          "is_active":  {
+                                                                            "name":  "is_active",
+                                                                            "type":  "boolean",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true,
+                                                                            "default":  true
+                                                                        },
+                                                          "starts_at":  {
+                                                                            "name":  "starts_at",
+                                                                            "type":  "timestamp",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                          "ends_at":  {
+                                                                          "name":  "ends_at",
+                                                                          "type":  "timestamp",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         },
+                                                          "updated_at":  {
+                                                                             "name":  "updated_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+                                                          "banners_active_order_idx":  {
+                                                                                           "name":  "banners_active_order_idx",
+                                                                                           "columns":  [
+                                                                                                           {
+                                                                                                               "expression":  "is_active",
+                                                                                                               "isExpression":  false,
+                                                                                                               "asc":  true,
+                                                                                                               "nulls":  "last"
+                                                                                                           },
+                                                                                                           {
+                                                                                                               "expression":  "sort_order",
+                                                                                                               "isExpression":  false,
+                                                                                                               "asc":  true,
+                                                                                                               "nulls":  "last"
+                                                                                                           }
+                                                                                                       ],
+                                                                                           "isUnique":  false,
+                                                                                           "concurrently":  false,
+                                                                                           "method":  "btree",
+                                                                                           "with":  {
+
+                                                                                                    }
+                                                                                       }
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.categories":  {
+                                             "name":  "categories",
+                                             "schema":  "",
+                                             "columns":  {
+                                                             "id":  {
+                                                                        "name":  "id",
+                                                                        "type":  "uuid",
+                                                                        "primaryKey":  true,
+                                                                        "notNull":  true,
+                                                                        "default":  "gen_random_uuid()"
+                                                                    },
+                                                             "name":  {
+                                                                          "name":  "name",
+                                                                          "type":  "varchar(120)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                             "slug":  {
+                                                                          "name":  "slug",
+                                                                          "type":  "varchar(150)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                             "description":  {
+                                                                                 "name":  "description",
+                                                                                 "type":  "text",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                             "image":  {
+                                                                           "name":  "image",
+                                                                           "type":  "text",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                             "parent_id":  {
+                                                                               "name":  "parent_id",
+                                                                               "type":  "uuid",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                             "is_active":  {
+                                                                               "name":  "is_active",
+                                                                               "type":  "boolean",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true,
+                                                                               "default":  true
+                                                                           },
+                                                             "sort_order":  {
+                                                                                "name":  "sort_order",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  0
+                                                                            },
+                                                             "created_at":  {
+                                                                                "name":  "created_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            },
+                                                             "updated_at":  {
+                                                                                "name":  "updated_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            }
+                                                         },
+                                             "indexes":  {
+                                                             "categories_slug_idx":  {
+                                                                                         "name":  "categories_slug_idx",
+                                                                                         "columns":  [
+                                                                                                         {
+                                                                                                             "expression":  "slug",
+                                                                                                             "isExpression":  false,
+                                                                                                             "asc":  true,
+                                                                                                             "nulls":  "last"
+                                                                                                         }
+                                                                                                     ],
+                                                                                         "isUnique":  true,
+                                                                                         "concurrently":  false,
+                                                                                         "method":  "btree",
+                                                                                         "with":  {
+
+                                                                                                  }
+                                                                                     },
+                                                             "categories_parent_idx":  {
+                                                                                           "name":  "categories_parent_idx",
+                                                                                           "columns":  [
+                                                                                                           {
+                                                                                                               "expression":  "parent_id",
+                                                                                                               "isExpression":  false,
+                                                                                                               "asc":  true,
+                                                                                                               "nulls":  "last"
+                                                                                                           }
+                                                                                                       ],
+                                                                                           "isUnique":  false,
+                                                                                           "concurrently":  false,
+                                                                                           "method":  "btree",
+                                                                                           "with":  {
+
+                                                                                                    }
+                                                                                       }
+                                                         },
+                                             "foreignKeys":  {
+
+                                                             },
+                                             "compositePrimaryKeys":  {
+
+                                                                      },
+                                             "uniqueConstraints":  {
+
+                                                                   },
+                                             "policies":  {
+
+                                                          },
+                                             "checkConstraints":  {
+
+                                                                  },
+                                             "isRLSEnabled":  false
+                                         },
+                   "public.contact_messages":  {
+                                                   "name":  "contact_messages",
+                                                   "schema":  "",
+                                                   "columns":  {
+                                                                   "id":  {
+                                                                              "name":  "id",
+                                                                              "type":  "uuid",
+                                                                              "primaryKey":  true,
+                                                                              "notNull":  true,
+                                                                              "default":  "gen_random_uuid()"
+                                                                          },
+                                                                   "name":  {
+                                                                                "name":  "name",
+                                                                                "type":  "varchar(120)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true
+                                                                            },
+                                                                   "email":  {
+                                                                                 "name":  "email",
+                                                                                 "type":  "varchar(255)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                                   "phone":  {
+                                                                                 "name":  "phone",
+                                                                                 "type":  "varchar(20)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                                   "subject":  {
+                                                                                   "name":  "subject",
+                                                                                   "type":  "varchar(255)",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  false
+                                                                               },
+                                                                   "message":  {
+                                                                                   "name":  "message",
+                                                                                   "type":  "text",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true
+                                                                               },
+                                                                   "is_read":  {
+                                                                                   "name":  "is_read",
+                                                                                   "type":  "boolean",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  false
+                                                                               },
+                                                                   "created_at":  {
+                                                                                      "name":  "created_at",
+                                                                                      "type":  "timestamp",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  true,
+                                                                                      "default":  "now()"
+                                                                                  },
+                                                                   "updated_at":  {
+                                                                                      "name":  "updated_at",
+                                                                                      "type":  "timestamp",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  true,
+                                                                                      "default":  "now()"
+                                                                                  }
+                                                               },
+                                                   "indexes":  {
+                                                                   "contact_messages_read_idx":  {
+                                                                                                     "name":  "contact_messages_read_idx",
+                                                                                                     "columns":  [
+                                                                                                                     {
+                                                                                                                         "expression":  "is_read",
+                                                                                                                         "isExpression":  false,
+                                                                                                                         "asc":  true,
+                                                                                                                         "nulls":  "last"
+                                                                                                                     }
+                                                                                                                 ],
+                                                                                                     "isUnique":  false,
+                                                                                                     "concurrently":  false,
+                                                                                                     "method":  "btree",
+                                                                                                     "with":  {
+
+                                                                                                              }
+                                                                                                 },
+                                                                   "contact_messages_created_idx":  {
+                                                                                                        "name":  "contact_messages_created_idx",
+                                                                                                        "columns":  [
+                                                                                                                        {
+                                                                                                                            "expression":  "created_at",
+                                                                                                                            "isExpression":  false,
+                                                                                                                            "asc":  true,
+                                                                                                                            "nulls":  "last"
+                                                                                                                        }
+                                                                                                                    ],
+                                                                                                        "isUnique":  false,
+                                                                                                        "concurrently":  false,
+                                                                                                        "method":  "btree",
+                                                                                                        "with":  {
+
+                                                                                                                 }
+                                                                                                    }
+                                                               },
+                                                   "foreignKeys":  {
+
+                                                                   },
+                                                   "compositePrimaryKeys":  {
+
+                                                                            },
+                                                   "uniqueConstraints":  {
+
+                                                                         },
+                                                   "policies":  {
+
+                                                                },
+                                                   "checkConstraints":  {
+
+                                                                        },
+                                                   "isRLSEnabled":  false
+                                               },
+                   "public.email_otps":  {
+                                             "name":  "email_otps",
+                                             "schema":  "",
+                                             "columns":  {
+                                                             "id":  {
+                                                                        "name":  "id",
+                                                                        "type":  "uuid",
+                                                                        "primaryKey":  true,
+                                                                        "notNull":  true,
+                                                                        "default":  "gen_random_uuid()"
+                                                                    },
+                                                             "email":  {
+                                                                           "name":  "email",
+                                                                           "type":  "varchar(255)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true
+                                                                       },
+                                                             "purpose":  {
+                                                                             "name":  "purpose",
+                                                                             "type":  "varchar(32)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true
+                                                                         },
+                                                             "name":  {
+                                                                          "name":  "name",
+                                                                          "type":  "varchar(120)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                             "phone":  {
+                                                                           "name":  "phone",
+                                                                           "type":  "varchar(20)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                             "otp_hash":  {
+                                                                              "name":  "otp_hash",
+                                                                              "type":  "text",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                             "attempts":  {
+                                                                              "name":  "attempts",
+                                                                              "type":  "integer",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  0
+                                                                          },
+                                                             "expires_at":  {
+                                                                                "name":  "expires_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true
+                                                                            },
+                                                             "resend_available_at":  {
+                                                                                         "name":  "resend_available_at",
+                                                                                         "type":  "timestamp",
+                                                                                         "primaryKey":  false,
+                                                                                         "notNull":  true
+                                                                                     },
+                                                             "consumed_at":  {
+                                                                                 "name":  "consumed_at",
+                                                                                 "type":  "timestamp",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                             "created_at":  {
+                                                                                "name":  "created_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            },
+                                                             "updated_at":  {
+                                                                                "name":  "updated_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            }
+                                                         },
+                                             "indexes":  {
+                                                             "email_otps_email_purpose_idx":  {
+                                                                                                  "name":  "email_otps_email_purpose_idx",
+                                                                                                  "columns":  [
+                                                                                                                  {
+                                                                                                                      "expression":  "email",
+                                                                                                                      "isExpression":  false,
+                                                                                                                      "asc":  true,
+                                                                                                                      "nulls":  "last"
+                                                                                                                  },
+                                                                                                                  {
+                                                                                                                      "expression":  "purpose",
+                                                                                                                      "isExpression":  false,
+                                                                                                                      "asc":  true,
+                                                                                                                      "nulls":  "last"
+                                                                                                                  }
+                                                                                                              ],
+                                                                                                  "isUnique":  true,
+                                                                                                  "concurrently":  false,
+                                                                                                  "method":  "btree",
+                                                                                                  "with":  {
+
+                                                                                                           }
+                                                                                              },
+                                                             "email_otps_expires_idx":  {
+                                                                                            "name":  "email_otps_expires_idx",
+                                                                                            "columns":  [
+                                                                                                            {
+                                                                                                                "expression":  "expires_at",
+                                                                                                                "isExpression":  false,
+                                                                                                                "asc":  true,
+                                                                                                                "nulls":  "last"
+                                                                                                            }
+                                                                                                        ],
+                                                                                            "isUnique":  false,
+                                                                                            "concurrently":  false,
+                                                                                            "method":  "btree",
+                                                                                            "with":  {
+
+                                                                                                     }
+                                                                                        }
+                                                         },
+                                             "foreignKeys":  {
+
+                                                             },
+                                             "compositePrimaryKeys":  {
+
+                                                                      },
+                                             "uniqueConstraints":  {
+
+                                                                   },
+                                             "policies":  {
+
+                                                          },
+                                             "checkConstraints":  {
+
+                                                                  },
+                                             "isRLSEnabled":  false
+                                         },
+                   "public.frequently_bought_together":  {
+                                                             "name":  "frequently_bought_together",
+                                                             "schema":  "",
+                                                             "columns":  {
+                                                                             "id":  {
+                                                                                        "name":  "id",
+                                                                                        "type":  "uuid",
+                                                                                        "primaryKey":  true,
+                                                                                        "notNull":  true,
+                                                                                        "default":  "gen_random_uuid()"
+                                                                                    },
+                                                                             "product_id":  {
+                                                                                                "name":  "product_id",
+                                                                                                "type":  "uuid",
+                                                                                                "primaryKey":  false,
+                                                                                                "notNull":  true
+                                                                                            },
+                                                                             "related_product_id":  {
+                                                                                                        "name":  "related_product_id",
+                                                                                                        "type":  "uuid",
+                                                                                                        "primaryKey":  false,
+                                                                                                        "notNull":  true
+                                                                                                    },
+                                                                             "score":  {
+                                                                                           "name":  "score",
+                                                                                           "type":  "integer",
+                                                                                           "primaryKey":  false,
+                                                                                           "notNull":  true,
+                                                                                           "default":  1
+                                                                                       },
+                                                                             "updated_at":  {
+                                                                                                "name":  "updated_at",
+                                                                                                "type":  "timestamp",
+                                                                                                "primaryKey":  false,
+                                                                                                "notNull":  true,
+                                                                                                "default":  "now()"
+                                                                                            }
+                                                                         },
+                                                             "indexes":  {
+                                                                             "fbt_pair_idx":  {
+                                                                                                  "name":  "fbt_pair_idx",
+                                                                                                  "columns":  [
+                                                                                                                  {
+                                                                                                                      "expression":  "product_id",
+                                                                                                                      "isExpression":  false,
+                                                                                                                      "asc":  true,
+                                                                                                                      "nulls":  "last"
+                                                                                                                  },
+                                                                                                                  {
+                                                                                                                      "expression":  "related_product_id",
+                                                                                                                      "isExpression":  false,
+                                                                                                                      "asc":  true,
+                                                                                                                      "nulls":  "last"
+                                                                                                                  }
+                                                                                                              ],
+                                                                                                  "isUnique":  true,
+                                                                                                  "concurrently":  false,
+                                                                                                  "method":  "btree",
+                                                                                                  "with":  {
+
+                                                                                                           }
+                                                                                              },
+                                                                             "fbt_product_idx":  {
+                                                                                                     "name":  "fbt_product_idx",
+                                                                                                     "columns":  [
+                                                                                                                     {
+                                                                                                                         "expression":  "product_id",
+                                                                                                                         "isExpression":  false,
+                                                                                                                         "asc":  true,
+                                                                                                                         "nulls":  "last"
+                                                                                                                     }
+                                                                                                                 ],
+                                                                                                     "isUnique":  false,
+                                                                                                     "concurrently":  false,
+                                                                                                     "method":  "btree",
+                                                                                                     "with":  {
+
+                                                                                                              }
+                                                                                                 }
+                                                                         },
+                                                             "foreignKeys":  {
+                                                                                 "frequently_bought_together_product_id_products_id_fk":  {
+                                                                                                                                              "name":  "frequently_bought_together_product_id_products_id_fk",
+                                                                                                                                              "tableFrom":  "frequently_bought_together",
+                                                                                                                                              "tableTo":  "products",
+                                                                                                                                              "columnsFrom":  [
+                                                                                                                                                                  "product_id"
+                                                                                                                                                              ],
+                                                                                                                                              "columnsTo":  [
+                                                                                                                                                                "id"
+                                                                                                                                                            ],
+                                                                                                                                              "onDelete":  "cascade",
+                                                                                                                                              "onUpdate":  "no action"
+                                                                                                                                          },
+                                                                                 "frequently_bought_together_related_product_id_products_id_fk":  {
+                                                                                                                                                      "name":  "frequently_bought_together_related_product_id_products_id_fk",
+                                                                                                                                                      "tableFrom":  "frequently_bought_together",
+                                                                                                                                                      "tableTo":  "products",
+                                                                                                                                                      "columnsFrom":  [
+                                                                                                                                                                          "related_product_id"
+                                                                                                                                                                      ],
+                                                                                                                                                      "columnsTo":  [
+                                                                                                                                                                        "id"
+                                                                                                                                                                    ],
+                                                                                                                                                      "onDelete":  "cascade",
+                                                                                                                                                      "onUpdate":  "no action"
+                                                                                                                                                  }
+                                                                             },
+                                                             "compositePrimaryKeys":  {
+
+                                                                                      },
+                                                             "uniqueConstraints":  {
+
+                                                                                   },
+                                                             "policies":  {
+
+                                                                          },
+                                                             "checkConstraints":  {
+
+                                                                                  },
+                                                             "isRLSEnabled":  false
+                                                         },
+                   "public.products":  {
+                                           "name":  "products",
+                                           "schema":  "",
+                                           "columns":  {
+                                                           "id":  {
+                                                                      "name":  "id",
+                                                                      "type":  "uuid",
+                                                                      "primaryKey":  true,
+                                                                      "notNull":  true,
+                                                                      "default":  "gen_random_uuid()"
+                                                                  },
+                                                           "title":  {
+                                                                         "name":  "title",
+                                                                         "type":  "varchar(255)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                           "slug":  {
+                                                                        "name":  "slug",
+                                                                        "type":  "varchar(300)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                           "description":  {
+                                                                               "name":  "description",
+                                                                               "type":  "text",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                           "short_description":  {
+                                                                                     "name":  "short_description",
+                                                                                     "type":  "text",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  false
+                                                                                 },
+                                                           "sku":  {
+                                                                       "name":  "sku",
+                                                                       "type":  "varchar(100)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  true
+                                                                   },
+                                                           "price":  {
+                                                                         "name":  "price",
+                                                                         "type":  "numeric(10, 2)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                           "discount_price":  {
+                                                                                  "name":  "discount_price",
+                                                                                  "type":  "numeric(10, 2)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                           "stock":  {
+                                                                         "name":  "stock",
+                                                                         "type":  "integer",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true,
+                                                                         "default":  0
+                                                                     },
+                                                           "low_stock_threshold":  {
+                                                                                       "name":  "low_stock_threshold",
+                                                                                       "type":  "integer",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  true,
+                                                                                       "default":  5
+                                                                                   },
+                                                           "images":  {
+                                                                          "name":  "images",
+                                                                          "type":  "jsonb",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true,
+                                                                          "default":  "\u0027[]\u0027::jsonb"
+                                                                      },
+                                                           "category_id":  {
+                                                                               "name":  "category_id",
+                                                                               "type":  "uuid",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                           "tags":  {
+                                                                        "name":  "tags",
+                                                                        "type":  "jsonb",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true,
+                                                                        "default":  "\u0027[]\u0027::jsonb"
+                                                                    },
+                                                           "is_featured":  {
+                                                                               "name":  "is_featured",
+                                                                               "type":  "boolean",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true,
+                                                                               "default":  false
+                                                                           },
+                                                           "is_active":  {
+                                                                             "name":  "is_active",
+                                                                             "type":  "boolean",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  true
+                                                                         },
+                                                           "avg_rating":  {
+                                                                              "name":  "avg_rating",
+                                                                              "type":  "numeric(3, 2)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "\u00270\u0027"
+                                                                          },
+                                                           "review_count":  {
+                                                                                "name":  "review_count",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  0
+                                                                            },
+                                                           "sold_count":  {
+                                                                              "name":  "sold_count",
+                                                                              "type":  "integer",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  0
+                                                                          },
+                                                           "weight":  {
+                                                                          "name":  "weight",
+                                                                          "type":  "numeric(8, 3)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                           "dimensions":  {
+                                                                              "name":  "dimensions",
+                                                                              "type":  "jsonb",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                           "meta_title":  {
+                                                                              "name":  "meta_title",
+                                                                              "type":  "varchar(255)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                           "meta_description":  {
+                                                                                    "name":  "meta_description",
+                                                                                    "type":  "text",
+                                                                                    "primaryKey":  false,
+                                                                                    "notNull":  false
+                                                                                },
+                                                           "created_at":  {
+                                                                              "name":  "created_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "now()"
+                                                                          },
+                                                           "updated_at":  {
+                                                                              "name":  "updated_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "now()"
+                                                                          }
+                                                       },
+                                           "indexes":  {
+                                                           "products_slug_idx":  {
+                                                                                     "name":  "products_slug_idx",
+                                                                                     "columns":  [
+                                                                                                     {
+                                                                                                         "expression":  "slug",
+                                                                                                         "isExpression":  false,
+                                                                                                         "asc":  true,
+                                                                                                         "nulls":  "last"
+                                                                                                     }
+                                                                                                 ],
+                                                                                     "isUnique":  true,
+                                                                                     "concurrently":  false,
+                                                                                     "method":  "btree",
+                                                                                     "with":  {
+
+                                                                                              }
+                                                                                 },
+                                                           "products_sku_idx":  {
+                                                                                    "name":  "products_sku_idx",
+                                                                                    "columns":  [
+                                                                                                    {
+                                                                                                        "expression":  "sku",
+                                                                                                        "isExpression":  false,
+                                                                                                        "asc":  true,
+                                                                                                        "nulls":  "last"
+                                                                                                    }
+                                                                                                ],
+                                                                                    "isUnique":  true,
+                                                                                    "concurrently":  false,
+                                                                                    "method":  "btree",
+                                                                                    "with":  {
+
+                                                                                             }
+                                                                                },
+                                                           "products_category_idx":  {
+                                                                                         "name":  "products_category_idx",
+                                                                                         "columns":  [
+                                                                                                         {
+                                                                                                             "expression":  "category_id",
+                                                                                                             "isExpression":  false,
+                                                                                                             "asc":  true,
+                                                                                                             "nulls":  "last"
+                                                                                                         }
+                                                                                                     ],
+                                                                                         "isUnique":  false,
+                                                                                         "concurrently":  false,
+                                                                                         "method":  "btree",
+                                                                                         "with":  {
+
+                                                                                                  }
+                                                                                     },
+                                                           "products_featured_idx":  {
+                                                                                         "name":  "products_featured_idx",
+                                                                                         "columns":  [
+                                                                                                         {
+                                                                                                             "expression":  "is_featured",
+                                                                                                             "isExpression":  false,
+                                                                                                             "asc":  true,
+                                                                                                             "nulls":  "last"
+                                                                                                         }
+                                                                                                     ],
+                                                                                         "isUnique":  false,
+                                                                                         "concurrently":  false,
+                                                                                         "method":  "btree",
+                                                                                         "with":  {
+
+                                                                                                  }
+                                                                                     },
+                                                           "products_active_idx":  {
+                                                                                       "name":  "products_active_idx",
+                                                                                       "columns":  [
+                                                                                                       {
+                                                                                                           "expression":  "is_active",
+                                                                                                           "isExpression":  false,
+                                                                                                           "asc":  true,
+                                                                                                           "nulls":  "last"
+                                                                                                       }
+                                                                                                   ],
+                                                                                       "isUnique":  false,
+                                                                                       "concurrently":  false,
+                                                                                       "method":  "btree",
+                                                                                       "with":  {
+
+                                                                                                }
+                                                                                   },
+                                                           "products_price_idx":  {
+                                                                                      "name":  "products_price_idx",
+                                                                                      "columns":  [
+                                                                                                      {
+                                                                                                          "expression":  "price",
+                                                                                                          "isExpression":  false,
+                                                                                                          "asc":  true,
+                                                                                                          "nulls":  "last"
+                                                                                                      }
+                                                                                                  ],
+                                                                                      "isUnique":  false,
+                                                                                      "concurrently":  false,
+                                                                                      "method":  "btree",
+                                                                                      "with":  {
+
+                                                                                               }
+                                                                                  },
+                                                           "products_rating_idx":  {
+                                                                                       "name":  "products_rating_idx",
+                                                                                       "columns":  [
+                                                                                                       {
+                                                                                                           "expression":  "avg_rating",
+                                                                                                           "isExpression":  false,
+                                                                                                           "asc":  true,
+                                                                                                           "nulls":  "last"
+                                                                                                       }
+                                                                                                   ],
+                                                                                       "isUnique":  false,
+                                                                                       "concurrently":  false,
+                                                                                       "method":  "btree",
+                                                                                       "with":  {
+
+                                                                                                }
+                                                                                   }
+                                                       },
+                                           "foreignKeys":  {
+                                                               "products_category_id_categories_id_fk":  {
+                                                                                                             "name":  "products_category_id_categories_id_fk",
+                                                                                                             "tableFrom":  "products",
+                                                                                                             "tableTo":  "categories",
+                                                                                                             "columnsFrom":  [
+                                                                                                                                 "category_id"
+                                                                                                                             ],
+                                                                                                             "columnsTo":  [
+                                                                                                                               "id"
+                                                                                                                           ],
+                                                                                                             "onDelete":  "set null",
+                                                                                                             "onUpdate":  "no action"
+                                                                                                         }
+                                                           },
+                                           "compositePrimaryKeys":  {
+
+                                                                    },
+                                           "uniqueConstraints":  {
+
+                                                                 },
+                                           "policies":  {
+
+                                                        },
+                                           "checkConstraints":  {
+
+                                                                },
+                                           "isRLSEnabled":  false
+                                       },
+                   "public.recently_viewed":  {
+                                                  "name":  "recently_viewed",
+                                                  "schema":  "",
+                                                  "columns":  {
+                                                                  "id":  {
+                                                                             "name":  "id",
+                                                                             "type":  "uuid",
+                                                                             "primaryKey":  true,
+                                                                             "notNull":  true,
+                                                                             "default":  "gen_random_uuid()"
+                                                                         },
+                                                                  "user_id":  {
+                                                                                  "name":  "user_id",
+                                                                                  "type":  "uuid",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true
+                                                                              },
+                                                                  "product_id":  {
+                                                                                     "name":  "product_id",
+                                                                                     "type":  "uuid",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  true
+                                                                                 },
+                                                                  "viewed_at":  {
+                                                                                    "name":  "viewed_at",
+                                                                                    "type":  "timestamp",
+                                                                                    "primaryKey":  false,
+                                                                                    "notNull":  true,
+                                                                                    "default":  "now()"
+                                                                                }
+                                                              },
+                                                  "indexes":  {
+                                                                  "rv_user_idx":  {
+                                                                                      "name":  "rv_user_idx",
+                                                                                      "columns":  [
+                                                                                                      {
+                                                                                                          "expression":  "user_id",
+                                                                                                          "isExpression":  false,
+                                                                                                          "asc":  true,
+                                                                                                          "nulls":  "last"
+                                                                                                      }
+                                                                                                  ],
+                                                                                      "isUnique":  false,
+                                                                                      "concurrently":  false,
+                                                                                      "method":  "btree",
+                                                                                      "with":  {
+
+                                                                                               }
+                                                                                  },
+                                                                  "rv_user_product_idx":  {
+                                                                                              "name":  "rv_user_product_idx",
+                                                                                              "columns":  [
+                                                                                                              {
+                                                                                                                  "expression":  "user_id",
+                                                                                                                  "isExpression":  false,
+                                                                                                                  "asc":  true,
+                                                                                                                  "nulls":  "last"
+                                                                                                              },
+                                                                                                              {
+                                                                                                                  "expression":  "product_id",
+                                                                                                                  "isExpression":  false,
+                                                                                                                  "asc":  true,
+                                                                                                                  "nulls":  "last"
+                                                                                                              }
+                                                                                                          ],
+                                                                                              "isUnique":  true,
+                                                                                              "concurrently":  false,
+                                                                                              "method":  "btree",
+                                                                                              "with":  {
+
+                                                                                                       }
+                                                                                          }
+                                                              },
+                                                  "foreignKeys":  {
+                                                                      "recently_viewed_user_id_users_id_fk":  {
+                                                                                                                  "name":  "recently_viewed_user_id_users_id_fk",
+                                                                                                                  "tableFrom":  "recently_viewed",
+                                                                                                                  "tableTo":  "users",
+                                                                                                                  "columnsFrom":  [
+                                                                                                                                      "user_id"
+                                                                                                                                  ],
+                                                                                                                  "columnsTo":  [
+                                                                                                                                    "id"
+                                                                                                                                ],
+                                                                                                                  "onDelete":  "cascade",
+                                                                                                                  "onUpdate":  "no action"
+                                                                                                              },
+                                                                      "recently_viewed_product_id_products_id_fk":  {
+                                                                                                                        "name":  "recently_viewed_product_id_products_id_fk",
+                                                                                                                        "tableFrom":  "recently_viewed",
+                                                                                                                        "tableTo":  "products",
+                                                                                                                        "columnsFrom":  [
+                                                                                                                                            "product_id"
+                                                                                                                                        ],
+                                                                                                                        "columnsTo":  [
+                                                                                                                                          "id"
+                                                                                                                                      ],
+                                                                                                                        "onDelete":  "cascade",
+                                                                                                                        "onUpdate":  "no action"
+                                                                                                                    }
+                                                                  },
+                                                  "compositePrimaryKeys":  {
+
+                                                                           },
+                                                  "uniqueConstraints":  {
+
+                                                                        },
+                                                  "policies":  {
+
+                                                               },
+                                                  "checkConstraints":  {
+
+                                                                       },
+                                                  "isRLSEnabled":  false
+                                              },
+                   "public.reviews":  {
+                                          "name":  "reviews",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "uuid",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true,
+                                                                     "default":  "gen_random_uuid()"
+                                                                 },
+                                                          "product_id":  {
+                                                                             "name":  "product_id",
+                                                                             "type":  "uuid",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true
+                                                                         },
+                                                          "user_id":  {
+                                                                          "name":  "user_id",
+                                                                          "type":  "uuid",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                          "rating":  {
+                                                                         "name":  "rating",
+                                                                         "type":  "integer",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                          "title":  {
+                                                                        "name":  "title",
+                                                                        "type":  "varchar(255)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                          "body":  {
+                                                                       "name":  "body",
+                                                                       "type":  "text",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "is_verified_purchase":  {
+                                                                                       "name":  "is_verified_purchase",
+                                                                                       "type":  "boolean",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  true,
+                                                                                       "default":  false
+                                                                                   },
+                                                          "is_approved":  {
+                                                                              "name":  "is_approved",
+                                                                              "type":  "boolean",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  false
+                                                                          },
+                                                          "helpful_votes":  {
+                                                                                "name":  "helpful_votes",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  0
+                                                                            },
+                                                          "images":  {
+                                                                         "name":  "images",
+                                                                         "type":  "jsonb",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true,
+                                                                         "default":  "\u0027[]\u0027::jsonb"
+                                                                     },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         },
+                                                          "updated_at":  {
+                                                                             "name":  "updated_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+                                                          "reviews_product_idx":  {
+                                                                                      "name":  "reviews_product_idx",
+                                                                                      "columns":  [
+                                                                                                      {
+                                                                                                          "expression":  "product_id",
+                                                                                                          "isExpression":  false,
+                                                                                                          "asc":  true,
+                                                                                                          "nulls":  "last"
+                                                                                                      }
+                                                                                                  ],
+                                                                                      "isUnique":  false,
+                                                                                      "concurrently":  false,
+                                                                                      "method":  "btree",
+                                                                                      "with":  {
+
+                                                                                               }
+                                                                                  },
+                                                          "reviews_user_idx":  {
+                                                                                   "name":  "reviews_user_idx",
+                                                                                   "columns":  [
+                                                                                                   {
+                                                                                                       "expression":  "user_id",
+                                                                                                       "isExpression":  false,
+                                                                                                       "asc":  true,
+                                                                                                       "nulls":  "last"
+                                                                                                   }
+                                                                                               ],
+                                                                                   "isUnique":  false,
+                                                                                   "concurrently":  false,
+                                                                                   "method":  "btree",
+                                                                                   "with":  {
+
+                                                                                            }
+                                                                               },
+                                                          "reviews_user_product_idx":  {
+                                                                                           "name":  "reviews_user_product_idx",
+                                                                                           "columns":  [
+                                                                                                           {
+                                                                                                               "expression":  "user_id",
+                                                                                                               "isExpression":  false,
+                                                                                                               "asc":  true,
+                                                                                                               "nulls":  "last"
+                                                                                                           },
+                                                                                                           {
+                                                                                                               "expression":  "product_id",
+                                                                                                               "isExpression":  false,
+                                                                                                               "asc":  true,
+                                                                                                               "nulls":  "last"
+                                                                                                           }
+                                                                                                       ],
+                                                                                           "isUnique":  true,
+                                                                                           "concurrently":  false,
+                                                                                           "method":  "btree",
+                                                                                           "with":  {
+
+                                                                                                    }
+                                                                                       }
+                                                      },
+                                          "foreignKeys":  {
+                                                              "reviews_product_id_products_id_fk":  {
+                                                                                                        "name":  "reviews_product_id_products_id_fk",
+                                                                                                        "tableFrom":  "reviews",
+                                                                                                        "tableTo":  "products",
+                                                                                                        "columnsFrom":  [
+                                                                                                                            "product_id"
+                                                                                                                        ],
+                                                                                                        "columnsTo":  [
+                                                                                                                          "id"
+                                                                                                                      ],
+                                                                                                        "onDelete":  "cascade",
+                                                                                                        "onUpdate":  "no action"
+                                                                                                    },
+                                                              "reviews_user_id_users_id_fk":  {
+                                                                                                  "name":  "reviews_user_id_users_id_fk",
+                                                                                                  "tableFrom":  "reviews",
+                                                                                                  "tableTo":  "users",
+                                                                                                  "columnsFrom":  [
+                                                                                                                      "user_id"
+                                                                                                                  ],
+                                                                                                  "columnsTo":  [
+                                                                                                                    "id"
+                                                                                                                ],
+                                                                                                  "onDelete":  "cascade",
+                                                                                                  "onUpdate":  "no action"
+                                                                                              }
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.search_history":  {
+                                                 "name":  "search_history",
+                                                 "schema":  "",
+                                                 "columns":  {
+                                                                 "id":  {
+                                                                            "name":  "id",
+                                                                            "type":  "uuid",
+                                                                            "primaryKey":  true,
+                                                                            "notNull":  true,
+                                                                            "default":  "gen_random_uuid()"
+                                                                        },
+                                                                 "user_id":  {
+                                                                                 "name":  "user_id",
+                                                                                 "type":  "uuid",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                                 "query":  {
+                                                                               "name":  "query",
+                                                                               "type":  "varchar(500)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                                 "result_count":  {
+                                                                                      "name":  "result_count",
+                                                                                      "type":  "integer",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  true,
+                                                                                      "default":  0
+                                                                                  },
+                                                                 "searched_at":  {
+                                                                                     "name":  "searched_at",
+                                                                                     "type":  "timestamp",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  true,
+                                                                                     "default":  "now()"
+                                                                                 }
+                                                             },
+                                                 "indexes":  {
+                                                                 "sh_user_idx":  {
+                                                                                     "name":  "sh_user_idx",
+                                                                                     "columns":  [
+                                                                                                     {
+                                                                                                         "expression":  "user_id",
+                                                                                                         "isExpression":  false,
+                                                                                                         "asc":  true,
+                                                                                                         "nulls":  "last"
+                                                                                                     }
+                                                                                                 ],
+                                                                                     "isUnique":  false,
+                                                                                     "concurrently":  false,
+                                                                                     "method":  "btree",
+                                                                                     "with":  {
+
+                                                                                              }
+                                                                                 }
+                                                             },
+                                                 "foreignKeys":  {
+                                                                     "search_history_user_id_users_id_fk":  {
+                                                                                                                "name":  "search_history_user_id_users_id_fk",
+                                                                                                                "tableFrom":  "search_history",
+                                                                                                                "tableTo":  "users",
+                                                                                                                "columnsFrom":  [
+                                                                                                                                    "user_id"
+                                                                                                                                ],
+                                                                                                                "columnsTo":  [
+                                                                                                                                  "id"
+                                                                                                                              ],
+                                                                                                                "onDelete":  "cascade",
+                                                                                                                "onUpdate":  "no action"
+                                                                                                            }
+                                                                 },
+                                                 "compositePrimaryKeys":  {
+
+                                                                          },
+                                                 "uniqueConstraints":  {
+
+                                                                       },
+                                                 "policies":  {
+
+                                                              },
+                                                 "checkConstraints":  {
+
+                                                                      },
+                                                 "isRLSEnabled":  false
+                                             },
+                   "public.users":  {
+                                        "name":  "users",
+                                        "schema":  "",
+                                        "columns":  {
+                                                        "id":  {
+                                                                   "name":  "id",
+                                                                   "type":  "uuid",
+                                                                   "primaryKey":  true,
+                                                                   "notNull":  true,
+                                                                   "default":  "gen_random_uuid()"
+                                                               },
+                                                        "name":  {
+                                                                     "name":  "name",
+                                                                     "type":  "varchar(120)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  true
+                                                                 },
+                                                        "email":  {
+                                                                      "name":  "email",
+                                                                      "type":  "varchar(255)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  true
+                                                                  },
+                                                        "password":  {
+                                                                         "name":  "password",
+                                                                         "type":  "text",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                        "phone":  {
+                                                                      "name":  "phone",
+                                                                      "type":  "varchar(20)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  false
+                                                                  },
+                                                        "role":  {
+                                                                     "name":  "role",
+                                                                     "type":  "user_role",
+                                                                     "typeSchema":  "public",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  true,
+                                                                     "default":  "\u0027customer\u0027"
+                                                                 },
+                                                        "is_email_verified":  {
+                                                                                  "name":  "is_email_verified",
+                                                                                  "type":  "boolean",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true,
+                                                                                  "default":  false
+                                                                              },
+                                                        "refresh_token":  {
+                                                                              "name":  "refresh_token",
+                                                                              "type":  "text",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                        "avatar":  {
+                                                                       "name":  "avatar",
+                                                                       "type":  "text",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                        "is_active":  {
+                                                                          "name":  "is_active",
+                                                                          "type":  "boolean",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true,
+                                                                          "default":  true
+                                                                      },
+                                                        "last_login_at":  {
+                                                                              "name":  "last_login_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                        "created_at":  {
+                                                                           "name":  "created_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       },
+                                                        "updated_at":  {
+                                                                           "name":  "updated_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       }
+                                                    },
+                                        "indexes":  {
+                                                        "users_email_idx":  {
+                                                                                "name":  "users_email_idx",
+                                                                                "columns":  [
+                                                                                                {
+                                                                                                    "expression":  "email",
+                                                                                                    "isExpression":  false,
+                                                                                                    "asc":  true,
+                                                                                                    "nulls":  "last"
+                                                                                                }
+                                                                                            ],
+                                                                                "isUnique":  true,
+                                                                                "concurrently":  false,
+                                                                                "method":  "btree",
+                                                                                "with":  {
+
+                                                                                         }
+                                                                            },
+                                                        "users_role_idx":  {
+                                                                               "name":  "users_role_idx",
+                                                                               "columns":  [
+                                                                                               {
+                                                                                                   "expression":  "role",
+                                                                                                   "isExpression":  false,
+                                                                                                   "asc":  true,
+                                                                                                   "nulls":  "last"
+                                                                                               }
+                                                                                           ],
+                                                                               "isUnique":  false,
+                                                                               "concurrently":  false,
+                                                                               "method":  "btree",
+                                                                               "with":  {
+
+                                                                                        }
+                                                                           }
+                                                    },
+                                        "foreignKeys":  {
+
+                                                        },
+                                        "compositePrimaryKeys":  {
+
+                                                                 },
+                                        "uniqueConstraints":  {
+
+                                                              },
+                                        "policies":  {
+
+                                                     },
+                                        "checkConstraints":  {
+
+                                                             },
+                                        "isRLSEnabled":  false
+                                    },
+                   "public.wishlists":  {
+                                            "name":  "wishlists",
+                                            "schema":  "",
+                                            "columns":  {
+                                                            "id":  {
+                                                                       "name":  "id",
+                                                                       "type":  "uuid",
+                                                                       "primaryKey":  true,
+                                                                       "notNull":  true,
+                                                                       "default":  "gen_random_uuid()"
+                                                                   },
+                                                            "user_id":  {
+                                                                            "name":  "user_id",
+                                                                            "type":  "uuid",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                            "product_id":  {
+                                                                               "name":  "product_id",
+                                                                               "type":  "uuid",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                            "created_at":  {
+                                                                               "name":  "created_at",
+                                                                               "type":  "timestamp",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true,
+                                                                               "default":  "now()"
+                                                                           }
+                                                        },
+                                            "indexes":  {
+                                                            "wishlists_user_product_idx":  {
+                                                                                               "name":  "wishlists_user_product_idx",
+                                                                                               "columns":  [
+                                                                                                               {
+                                                                                                                   "expression":  "user_id",
+                                                                                                                   "isExpression":  false,
+                                                                                                                   "asc":  true,
+                                                                                                                   "nulls":  "last"
+                                                                                                               },
+                                                                                                               {
+                                                                                                                   "expression":  "product_id",
+                                                                                                                   "isExpression":  false,
+                                                                                                                   "asc":  true,
+                                                                                                                   "nulls":  "last"
+                                                                                                               }
+                                                                                                           ],
+                                                                                               "isUnique":  true,
+                                                                                               "concurrently":  false,
+                                                                                               "method":  "btree",
+                                                                                               "with":  {
+
+                                                                                                        }
+                                                                                           },
+                                                            "wishlists_user_idx":  {
+                                                                                       "name":  "wishlists_user_idx",
+                                                                                       "columns":  [
+                                                                                                       {
+                                                                                                           "expression":  "user_id",
+                                                                                                           "isExpression":  false,
+                                                                                                           "asc":  true,
+                                                                                                           "nulls":  "last"
+                                                                                                       }
+                                                                                                   ],
+                                                                                       "isUnique":  false,
+                                                                                       "concurrently":  false,
+                                                                                       "method":  "btree",
+                                                                                       "with":  {
+
+                                                                                                }
+                                                                                   }
+                                                        },
+                                            "foreignKeys":  {
+                                                                "wishlists_user_id_users_id_fk":  {
+                                                                                                      "name":  "wishlists_user_id_users_id_fk",
+                                                                                                      "tableFrom":  "wishlists",
+                                                                                                      "tableTo":  "users",
+                                                                                                      "columnsFrom":  [
+                                                                                                                          "user_id"
+                                                                                                                      ],
+                                                                                                      "columnsTo":  [
+                                                                                                                        "id"
+                                                                                                                    ],
+                                                                                                      "onDelete":  "cascade",
+                                                                                                      "onUpdate":  "no action"
+                                                                                                  },
+                                                                "wishlists_product_id_products_id_fk":  {
+                                                                                                            "name":  "wishlists_product_id_products_id_fk",
+                                                                                                            "tableFrom":  "wishlists",
+                                                                                                            "tableTo":  "products",
+                                                                                                            "columnsFrom":  [
+                                                                                                                                "product_id"
+                                                                                                                            ],
+                                                                                                            "columnsTo":  [
+                                                                                                                              "id"
+                                                                                                                          ],
+                                                                                                            "onDelete":  "cascade",
+                                                                                                            "onUpdate":  "no action"
+                                                                                                        }
+                                                            },
+                                            "compositePrimaryKeys":  {
+
+                                                                     },
+                                            "uniqueConstraints":  {
+
+                                                                  },
+                                            "policies":  {
+
+                                                         },
+                                            "checkConstraints":  {
+
+                                                                 },
+                                            "isRLSEnabled":  false
+                                        }
+               },
+    "enums":  {
+                  "public.user_role":  {
+                                           "name":  "user_role",
+                                           "schema":  "public",
+                                           "values":  [
+                                                          "customer",
+                                                          "admin"
+                                                      ]
+                                       }
+              },
+    "schemas":  {
+
+                },
+    "sequences":  {
+
+                  },
+    "roles":  {
+
+              },
+    "policies":  {
+
+                 },
+    "views":  {
+
+              },
+    "_meta":  {
+                  "columns":  {
+
+                              },
+                  "schemas":  {
+
+                              },
+                  "tables":  {
+
+                             }
+              }
+}

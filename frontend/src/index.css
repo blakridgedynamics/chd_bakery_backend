@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Chandigarh Bakery — warm, premium home-bakery design system.
+   All colors are HSL. Use semantic tokens only in components. */
+
+@layer base {
+  :root {
+    --background: 36 38% 96%;          /* warm cream */
+    --foreground: 24 30% 15%;          /* deep cocoa */
+
+    --card: 36 45% 98%;
+    --card-foreground: 24 30% 15%;
+
+    --popover: 36 45% 98%;
+    --popover-foreground: 24 30% 15%;
+
+    --primary: 24 55% 32%;             /* rich caramel brown */
+    --primary-foreground: 36 45% 98%;
+    --primary-glow: 28 65% 48%;
+
+    --secondary: 32 35% 88%;           /* soft beige */
+    --secondary-foreground: 24 35% 22%;
+
+    --muted: 34 28% 90%;
+    --muted-foreground: 24 15% 40%;
+
+    --accent: 32 75% 55%;              /* honey */
+    --accent-foreground: 24 40% 15%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 36 45% 98%;
+
+    --border: 30 25% 84%;
+    --input: 30 25% 84%;
+    --ring: 24 55% 32%;
+
+    --radius: 1rem;
+
+    --gradient-warm: linear-gradient(135deg, hsl(36 50% 95%), hsl(32 45% 88%));
+    --gradient-primary: linear-gradient(135deg, hsl(24 55% 32%), hsl(28 65% 48%));
+    --gradient-hero: linear-gradient(180deg, hsl(36 50% 96% / 0.2), hsl(36 50% 96% / 0.95));
+
+    --shadow-soft: 0 4px 20px -8px hsl(24 40% 25% / 0.18);
+    --shadow-warm: 0 12px 40px -16px hsl(24 55% 32% / 0.28);
+    --shadow-card: 0 2px 12px -4px hsl(24 30% 20% / 0.12);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 36 38% 96%;
+    --sidebar-foreground: 24 30% 15%;
+    --sidebar-primary: 24 55% 32%;
+    --sidebar-primary-foreground: 36 45% 98%;
+    --sidebar-accent: 32 35% 88%;
+    --sidebar-accent-foreground: 24 35% 22%;
+    --sidebar-border: 30 25% 84%;
+    --sidebar-ring: 24 55% 32%;
+  }
+
+  .dark {
+    --background: 24 20% 10%;
+    --foreground: 36 30% 92%;
+    --card: 24 22% 13%;
+    --card-foreground: 36 30% 92%;
+    --popover: 24 22% 13%;
+    --popover-foreground: 36 30% 92%;
+    --primary: 32 70% 60%;
+    --primary-foreground: 24 30% 12%;
+    --secondary: 24 18% 20%;
+    --secondary-foreground: 36 30% 92%;
+    --muted: 24 18% 18%;
+    --muted-foreground: 36 15% 65%;
+    --accent: 32 70% 55%;
+    --accent-foreground: 24 30% 12%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 36 30% 92%;
+    --border: 24 18% 22%;
+    --input: 24 18% 22%;
+    --ring: 32 70% 60%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-warm { background-image: var(--gradient-warm); }
+  .bg-gradient-primary { background-image: var(--gradient-primary); }
+  .bg-gradient-hero { background-image: var(--gradient-hero); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .transition-smooth { transition: var(--transition-smooth); }
+  .hover-lift { @apply transition-smooth hover:-translate-y-1 hover:shadow-warm; }
+  .text-balance { text-wrap: balance; }
+}

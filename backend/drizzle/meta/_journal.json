@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1778565257188,
+      "tag": "0000_lame_quentin_quire",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1778582570849,
+      "tag": "0001_remove_commerce_add_email_otps",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778720000000,
+      "tag": "0002_site_settings_custom_cakes",
+      "breakpoints": true
+    }
+  ]
+}
